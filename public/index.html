@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="lll.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>StackOverflow clone</title>
+    <style>
+      body {
+        transition: background-color 1s ease;
+        background-color: #ffffff;
+      }
+    </style>
+  
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script>
+     
+      function updateTheme(weather) {
+        const body = document.body;
+        if (weather.includes('rain') || weather.includes('cloud')) {
+          body.style.backgroundColor = '#2c3e50'; 
+        } else {
+          body.style.backgroundColor = '#ffffff'; 
+        }
+      }
+    
+      
+      const weatherAPI =  'https://api.openweathermap.org/data/2.5/weather?lat={18.63609511141805}&lon={73.8804332951786}&appid={822befa4da1ac1b6c62b9aec40962eb6}';'
+
+    
+      fetch(weatherAPI)
+        .then(response => response.json())
+        .then(data => {
+          
+          const weather = data && data.weather;
+          
+          if (weather) {
+            updateTheme(weather);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching weather data:', error);
+        });
+    </script>
+    
+    
+
+
+         
+              
+ 
+    
+    
+    
+  </body>
+</html>
